@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:app/firebase_options.dart';
-
+import 'weather_view.dart';
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
@@ -111,6 +111,11 @@ class _LoginViewState extends State<LoginView> {
                         password: password,
                       );
                       print(UserCredential);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => WeatherApp()),
+                      );
+                      
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'user-not-found') {
                         print('User Not Found!');

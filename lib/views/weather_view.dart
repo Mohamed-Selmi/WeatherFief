@@ -1,7 +1,8 @@
 import 'dart:convert';
+import 'package:app/views/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-
+import 'register_view.dart';
 class WeatherApp extends StatefulWidget {
   @override
   _WeatherAppState createState() => _WeatherAppState();
@@ -101,6 +102,16 @@ class _WeatherAppState extends State<WeatherApp> {
             Expanded(
               child: _buildWeatherUI(),
             ),
+              SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () {
+                Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => RegisterView()),
+                      );
+            },
+            child: Text('Logout'),
+          ),
           ],
         ),
       ),

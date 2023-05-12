@@ -1,8 +1,9 @@
 import 'package:app/firebase_options.dart';
+import 'package:app/views/login_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
+import 'login_view.dart';
 class RegisterView extends StatefulWidget {
   const RegisterView({Key? key}) : super(key: key);
 
@@ -110,6 +111,10 @@ class _RegisterViewState extends State<RegisterView> {
                               password: password,
                             );
                             print(UserCredential);
+                            Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => LoginView()),
+                      );
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
                               print('Weak Password!');
